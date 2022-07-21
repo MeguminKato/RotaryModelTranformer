@@ -8,7 +8,8 @@
 ### 4. ModelPart 等变量复制到class中
 ### 5.
 
-public static MeshDefinition createBodyLayer() {
+<code>
+    public static MeshDefinition createBodyLayer() {
     var mesh = new MeshDefinition();
     var partdefinition = mesh.getRoot();
 
@@ -16,11 +17,13 @@ public static MeshDefinition createBodyLayer() {
 
     return mesh;
 }
+</code>
 
 ### 6.
+<code>
 ResourceLocation name = !!!model name!!! ;
 ModelLayerLocation modelLayerLocation = ModModelLayers.make(name.getPath(),"main");
 modelconsumer.accept(modelLayerLocation, () -> LayerDefinition.create(!!! createBodyLayer() !!!, texW, texH));
 ModModelLayers.layers.put(name,modelLayerLocation);
-
+</code>
 ### 7. enjoy your model :)
