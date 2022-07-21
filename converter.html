@@ -1,0 +1,47 @@
+<html>
+<body>
+<textarea style="height:300px;width:1000px" id="ss"></textarea>
+<br /><br />
+<button onclick="run();">run</button>
+<br /><br />
+<textarea style="height:500px;width:1000px" id="result"></textarea>
+
+
+<script>
+
+    function run(){
+    var data = "";
+    var className = "";
+    var codeLine = [];
+    var m0 = "";
+    var map = "";
+        data = $("#ss").val();
+        className = data.substring(data.indexOf("class")+6,data.indexOf(" extends"));
+        var d = data.substring(data.indexOf("()"));
+        codeLine = d.substring(0,d.indexOf("}")).split("\n");
+        for(i in codeLine){
+            var line = codeLine[i];
+            if(line.indexOf("Shape")!=-1){
+                //console.log(line.trim());
+                if(line.indexOf("LODModelPart")>-1){
+                    m0+="ModelPart "+line.substring("Shape",line.indexOf("=")).trim()+";\n"
+                    map+="\nLODModelPart.simpleCreate(\""+line.substring("Shape",line.indexOf("=")).trim()+"\",partdefinition,";
+                    map+=line.split(",")[1]+","+line.split(",")[2].split(")")[0]+", ";
+                }
+                if(line.indexOf("addBox")>-1){
+                    map+=line.substring(line.indexOf("(")+1,line.indexOf(")"))+",";
+                }
+                if(line.indexOf("setRotationPoint")>-1){
+                    map+=line.substring(line.indexOf("(")+1,line.indexOf(")"))+",";
+                }
+                if(line.indexOf("setRotation(")>-1){
+                    map+=line.split(",")[1]+","+line.split(",")[2]+","+line.split(",")[3].split(");")[0]+");";
+                }
+            }
+        }
+        $("#result").val(m0+"\n\n\n\n\n\n"+map);
+    }
+</script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+</body>
+</html>
