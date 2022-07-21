@@ -6,23 +6,24 @@
 ### 2. 将原版代码复制到网页上端文本框
 ### 3. 点击run
 ### 4. ModelPart 等变量复制到class中
-### 5.<br /><br />
-<code>
-    public static MeshDefinition createBodyLayer() {<br />
-    var mesh = new MeshDefinition();<br />
-    var partdefinition = mesh.getRoot();<br />
-    <br />
-    ... model code<br />
-    <br />
-    return mesh;<br />
-}<br />
-</code>
+### 5.
 
-### 6.<br /><br />
-<code><br />
-ResourceLocation name = !!!model name!!! ;<br />
-ModelLayerLocation modelLayerLocation = ModModelLayers.make(name.getPath(),"main");<br />
-modelconsumer.accept(modelLayerLocation, () -> LayerDefinition.create(!!! createBodyLayer() !!!, texW, texH));<br />
-ModModelLayers.layers.put(name,modelLayerLocation);<br />
-</code><br /><br />
+>public static MeshDefinition createBodyLayer() {<br />
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var mesh = new MeshDefinition();<br />
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var partdefinition = mesh.getRoot();<br />
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;... model code<br />
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return mesh;<br />
+>}<br />
+
+
+### 6.
+
+>ResourceLocation name = !!!model name!!! ;<br />
+>ModelLayerLocation modelLayerLocation = ModModelLayers.make(name.getPath(),"main");<br />
+>modelconsumer.accept(modelLayerLocation, () -> LayerDefinition.create(!!! createBodyLayer() !!!, texW, texH));<br />
+>ModModelLayers.layers.put(name,modelLayerLocation);
+<br />
+
 ### 7. enjoy your model :)
